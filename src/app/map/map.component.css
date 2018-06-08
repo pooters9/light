@@ -1,0 +1,30 @@
+/* p {
+    position: absolute;
+    margin-left: 25vw;
+    height: 50vh;
+    width: 50vw;
+    top: 25vh;
+    background-color: burlywood;
+    border: 10px double brown;
+} */
+
+.map {
+    overflow: scroll;
+    position: absolute;
+    margin-left: 25vw;
+    height: 50vh;
+    width: 50vw;
+    top: 25vh;
+    background-color: burlywood;
+    border: 10px groove brown;
+}
+
+.row {
+    display: flex;
+    height: 10%;
+}
+.col {
+    width: 10%;
+    min-width: 10%;
+    border: 1px solid;
+}

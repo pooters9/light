@@ -1,0 +1,18 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center" [ngClass]="{ 'light': light === 'light', 'dark': light === 'dark', 'mix': !light }">
+  <h1 (click)="home()">
+    Luminous Umbra
+  </h1>
+  <h5 (click)="toggleMarket()" *ngIf="route === 'zone'" class="clickable">Market</h5>
+  <!-- <div (click)="toggleMarket()">
+      MARKET
+  </div> -->
+  <app-intro *ngIf="!route"></app-intro>
+  <app-create *ngIf="route === 'create'"></app-create>
+  <app-zone *ngIf="route === 'zone'"></app-zone>
+  <app-profile *ngIf="route === 'zone'"></app-profile>
+  <app-mini-map *ngIf="route === 'zone'" (click)="toggleMap()"></app-mini-map>
+  <app-map *ngIf="showMap && route === 'zone'"></app-map>
+  <app-market *ngIf="showMarket && route === 'zone'"></app-market>
+</div>
+

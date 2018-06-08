@@ -1,0 +1,55 @@
+.mini-map {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    bottom: 30px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    /* color: black; */
+}
+
+/* .center {
+    background-color: white;
+    margin: auto;
+    margin-top: 45%;
+    height: 10%;
+    width: 10%;
+} */
+
+.center {
+    /* color: cyan; */
+}
+
+.row {
+    height: 11.1111111%;
+    display: flex;
+}
+
+.col {
+    width: 11.1111111%;
+    color: white;
+    background-color: brown;
+}
+
+.light {
+    color: black;
+    background-color: lightyellow;
+}
+.dark {
+    color: black;
+    background-color: lightgrey;
+}
+
+.blue {
+    background-color: blue;
+}
+.grey {
+    background-color: black;
+}
+.green {
+    background-color: green;
+}
+.orange {
+    background-color: orange;
+}

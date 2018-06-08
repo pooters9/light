@@ -1,0 +1,18 @@
+.char {
+    top: 5%;
+    width: 10%;
+    position: absolute;
+    padding-left: 1rem;
+}
+span {
+    display: block;
+}
+h2 {
+    margin-bottom: 0;
+    margin-top: 3rem;
+}
+button {
+    font-size: 12px;
+    margin: 0;
+    padding: 3px;
+}

@@ -1,0 +1,133 @@
+<!-- <ng-container *ngIf="plots"> -->
+
+<section *ngIf="plots.length">
+  <div>
+    <div class="resource" (click)=harvest(0) *ngIf="plots[0]">
+      {{plots[0]}}
+      <br>
+      <img src="{{getResourcePic(plots[0])}}" alt="{{plots[0]}}}" width="50" height="50">
+      <!-- {{getResourcePic(plots[0])}} -->
+    </div>
+    <div class="resource" (click)=build(0) *ngIf="!plots[0] && !builds[0]">
+      <img src="https://thumb1.shutterstock.com/display_pic_with_logo/3020312/360361889/stock-vector-screwdriver-and-wrench-icon-360361889.jpg" alt="Build" width="50" height="50">
+      <!-- <img src="" alt="Build" width="25" height="25"> -->
+    </div>
+    <div class="resource" *ngIf="builds[0]">
+      {{builds[0]}}
+      <!-- <img src="{{getResourcePic(plots[3])}}" alt="{{plots[3]}}}" width="50" height="50"> -->
+    </div>
+  </div>
+  <div>
+    <div class="resource" (click)=harvest(1) *ngIf="plots[1]">
+      {{plots[1]}}
+      <br>
+      <img src="{{getResourcePic(plots[1])}}" alt="{{plots[1]}}}" width="50" height="50">
+      <!-- {{getResourcePic(plots[1])}} -->
+    </div>
+    <div class="resource" (click)=build(1) *ngIf="!plots[1] && !builds[1]">
+      <img src="https://thumb1.shutterstock.com/display_pic_with_logo/3020312/360361889/stock-vector-screwdriver-and-wrench-icon-360361889.jpg" alt="Build" width="50" height="50">
+    </div>
+    <div class="resource" *ngIf="builds[1]">
+      {{builds[1]}}
+      <!-- <img src="{{getResourcePic(plots[3])}}" alt="{{plots[3]}}}" width="50" height="50"> -->
+    </div>
+  </div>
+</section>
+<section *ngIf="plots.length">
+  <div>
+    <div class="resource" (click)=harvest(2) *ngIf="plots[2]">
+      {{plots[2]}}
+      <br>
+      <img src="{{getResourcePic(plots[2])}}" alt="{{plots[2]}}}" width="50" height="50">
+      <!-- {{getResourcePic(plots[2])}} -->
+    </div>
+    <div class="resource" (click)=build(2) *ngIf="!plots[2] && !builds[2]">
+      <img src="https://thumb1.shutterstock.com/display_pic_with_logo/3020312/360361889/stock-vector-screwdriver-and-wrench-icon-360361889.jpg" alt="Build" width="50" height="50">
+    </div>
+    <div class="resource" *ngIf="builds[2]">
+      {{builds[2]}}
+      <!-- <img src="{{getResourcePic(plots[3])}}" alt="{{plots[3]}}}" width="50" height="50"> -->
+    </div>
+  </div>
+  <div>
+    <div class="resource" (click)=harvest(3) *ngIf="plots[3]">
+      {{plots[3]}}
+      <br>
+      <img src="{{getResourcePic(plots[3])}}" alt="{{plots[3]}}}" width="50" height="50">
+      <!-- {{getResourcePic(plots[3])}} -->
+    </div>
+    <div class="resource" (click)=build(3) *ngIf="!plots[3] && !builds[3]">
+      <img src="https://thumb1.shutterstock.com/display_pic_with_logo/3020312/360361889/stock-vector-screwdriver-and-wrench-icon-360361889.jpg" alt="Build" width="50" height="50">
+    </div>
+    <div class="resource" *ngIf="builds[3]">
+      {{builds[3]}}
+      <!-- <img src="{{getResourcePic(plots[3])}}" alt="{{plots[3]}}}" width="50" height="50"> -->
+    </div>
+  </div>
+</section>
+
+<section *ngIf="!plots.length" class="monster">
+  <div *ngIf="mob?.name" class="monsterStats">
+    <span>
+      {{mob.name}}!
+    </span>
+    <span>
+      HP: {{mob.hp}}
+    </span>
+    <span>
+      Attack: {{mob.attack}}
+    </span>
+    <span>
+      Defense: {{mob.def}}
+    </span>
+    <br>
+    <button (click)="battle()">Battle</button>
+  </div>
+
+  <div *ngIf="!mob?.name">
+    Victory!
+  </div>
+</section>
+
+
+
+<div class="bottom">
+  <table>
+    <tr>
+      <!-- <ng-container *ngFor="let resource of resourcesArray">
+
+        <td *ngIf="resource.animate" class="plusAnimation">
+            {{resource.name}}: {{resource.val}}
+          </td>
+      </ng-container> -->
+      <td *ngFor="let resource of resourcesArray" [ngClass]="{ 'plusAnimation': resource.animate}">
+        {{resource.name}}: {{resource.val}}
+      </td>
+    </tr>
+    <!-- <tr>
+      <td *ngFor="let resource of resourcesArray">
+        {{resource.name}}: {{resource.val}}
+      </td>
+    </tr> -->
+  </table>
+</div>
+
+
+
+<div class="compass">
+  <button (click)="updateLocation(0, 1)">N</button>
+  <br>
+  <button (click)="updateLocation(-1, 0)">W</button>
+  <button (click)="updateLocation(1, 0)">E</button>
+  <br>
+  <button (click)="updateLocation(0, -1)">S</button>
+  <br>
+  <span>({{location[0]}}, {{location[1]}})</span>
+</div>
+
+<p (click)="selectItem(item)" *ngIf="item?.name">
+  {{item.name}}
+  <br>
+  <img src="{{item.imgSrc}}" alt="I'm an item" width="50" height="50">
+  <!-- <img src="https://image.shutterstock.com/z/stock-vector-sword-illustration-565637653.jpg" alt="I'm an item" width="50" height="50"> -->
+</p>

@@ -1,0 +1,30 @@
+<div class="char">
+    {{raceName}} {{className}}
+    <h2>Stats</h2>
+    <br>
+    <span *ngFor="let stat of stats">{{stat.name}}: {{stat.value}}</span>
+    <h2>Inventory</h2>
+    <br>
+    <span *ngFor="let item of items" >
+        {{item}}
+        <button (click)="equipItem(item)">+</button>
+        <button (click)="sellItem(item)">$</button>
+    </span>
+    <h2>Equipped</h2>
+    <br>
+    <span *ngFor="let equip of equipment; let i=index;">
+        {{equip}}
+        <button (click)="unequipItem(equip, i)">-</button>
+    </span>
+    <!-- <br> -->
+    <!-- <app-mini-map (click)="toggleMap()"></app-mini-map>
+    <app-map *ngIf="showMap"></app-map> -->
+    <!-- <div (click)="toggleMap()">
+        MAP
+    </div> -->
+    <!-- <br> -->
+    <!-- <div (click)="toggleMarket()">
+        MARKET
+        <app-market *ngIf="showMarket"></app-market>
+    </div> -->
+</div>

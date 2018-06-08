@@ -1,0 +1,55 @@
+tr, th, td, table {
+    border: 1px solid;
+    border-spacing: 0;
+}
+td {
+    cursor: pointer;
+}
+/* td:hover {
+    background-color: yellow;
+} */
+.light:hover {
+    /* background-color: lightyellow; */
+    background-image: linear-gradient(-20deg, white 0%, lightyellow 100%);
+}
+.dark:hover {
+    /* background-color: lightgrey; */
+    background-image: linear-gradient(-20deg, white 0%, lightgrey 100%);
+}
+table {
+    flex: 1;
+    background-color: white;
+}
+section {
+    display: flex;
+    padding: 1rem;
+}
+.abilitiesContainer,
+.abilities,
+div.stats {
+    display: grid;
+    width: 10%;
+}
+.main {
+    display: flex;
+    padding-left: 10%;
+    width: 25%;
+}
+
+.abilities {
+    display:grid;
+    
+}
+.abilitiesContainer {
+    width: 100%;
+    border: 1px solid;
+    border-radius: 5px;
+}
+.ability {
+    padding-top: 5px;
+}
+h5 {
+    margin-top: 0;
+    margin-bottom: 0;
+    text-decoration: underline;
+}

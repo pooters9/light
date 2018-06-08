@@ -1,0 +1,54 @@
+<h2>Select a Race and Class</h2>
+<section>
+  <div class="main">
+    <table>
+      <tr *ngFor="let race of races">
+        <td (click)="selectRace(race)" class="{{light}}">{{race}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="stats main" *ngIf="raceSelected">
+    <span>{{raceSelected}}</span>
+    <span>HP: +{{getRaceStatMods()?.HP}}</span>
+    <span>Attack: +{{getRaceStatMods()?.Attack}}</span>
+    <span>Defense: +{{getRaceStatMods()?.Def}}</span>
+  </div>
+  <div class="abilities main" *ngIf="raceSelected && raceAbilities?.length">
+    <h5>Abilities</h5>
+    <div *ngFor="let ability of raceAbilities" class="abilitiesContainer">
+      <span class="ability">- {{ability.name}} -</span>
+      <span class="ability">{{ability.statMod.name}} {{ability.statMod.func}} {{ability.statMod.value}}</span>
+    </div>
+    <!-- <ng-container class="abilitiesContainer">
+    </ng-container> -->
+  </div>
+</section>
+<section>
+    <div class="main">
+      <table>
+        <tr *ngFor="let class of classes">
+          <td (click)="selectClass(class)" class="{{light}}">{{class}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="stats main" *ngIf="classSelected">
+      <span>{{classSelected}}</span>
+      <span>HP: +{{getClassStatMods()?.HP}}</span>
+      <span>Attack: +{{getClassStatMods()?.Attack}}</span>
+      <span>Defense: +{{getClassStatMods()?.Def}}</span>
+    </div>
+    <div class="abilities main" *ngIf="classEquipment && classEquipment?.length">
+      <h5>Can Equip:</h5>
+      <div *ngFor="let equip of classEquipment" class="abilitiesContainer">
+        <span class="ability">- {{equip}} -</span>
+      </div>
+    </div> 
+    <!-- <div class="abilities main" *ngIf="classSelected && classAbilities?.length">
+        <h5>Abilities</h5>
+        <div *ngFor="let ability of classAbilities" class="abilitiesContainer">
+          <span class="ability">- {{ability.name}} -</span>
+          <span class="ability">{{ability.statMod.name}} {{ability.statMod.func}} {{ability.statMod.value}}</span>
+        </div>
+      </div> -->
+</section>
+<button *ngIf="raceSelected && classSelected" (click)="begin()">Begin</button>

@@ -1,0 +1,10 @@
+.market {
+    overflow: scroll;
+    position: absolute;
+    margin-left: 17.5vw;
+    height: 60vh;
+    width: 60vw;
+    top: 15vh;
+    background-color: lightyellow;
+    border: 10px ridge lightyellow;
+}

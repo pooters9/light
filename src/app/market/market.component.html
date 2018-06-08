@@ -1,0 +1,17 @@
+<div class="market" appStopProp>
+    <!-- <form #marketForm="ngForm"> -->
+        <!-- {{newSaleItem}}  -->
+        <!-- Price: <input type="number" name="price" [(ngModel)]="newPrice"> -->
+        <!-- <button (click)="createSale()">Create</button> -->
+    <!-- </form> -->
+    <!-- <br> -->
+    <div>
+        <table>
+            <tr *ngFor="let sale of sales; let i=index">
+                <td>{{sale.name}} -- </td>
+                <td>${{sale.price}}</td>
+                <td><button (click)="cancelSale(i, sale.name)">Cancel</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

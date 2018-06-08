@@ -1,0 +1,12 @@
+<div class="mini-map">
+  <div class="row" *ngFor="let row of rows">
+    <div class="col" *ngFor="let col of cols" [ngClass]="{'light': getGridLight(col, row) === 'light', 'dark': getGridLight(col, row) === 'dark', 'orange': getGridLight(col, row) === 'orange', 'grey': getGridLight(col, row) === 'grey', 'green': getGridLight(col, row) === 'green', 'blue': getGridLight(col, row) === 'blue'}">
+      <span *ngIf="col === 0 && row === 0" class="center">:)</span>
+      <span *ngIf="!getGridLight(col, row)">x</span>
+    </div>
+  </div>
+  <!-- <div class="center">
+
+    Mini-Map
+  </div> -->
+</div>
