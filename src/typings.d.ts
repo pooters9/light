@@ -8,23 +8,29 @@ type Light = 'light' | 'dark';
 
 type Stat = {
   name: string;
-  func?: string;
   value: number;
+  func?: string;
+  lvlMod?: number;
 }
 
 type Ability = {
   name: string;
   active: boolean;
-  statMod: Stat;
+  passive: boolean;
+  statMod?: Stat[];
+  desc?: string;
   extra?: any;
 }
 
 type Class = {
   name: string;
   equipment: string[];
+  baseStats: {HP:number, Attack:number, Defense:number};
+  abilities: Ability[];
 }
 
 type Race = {
   name: string;
+  baseStats: {HP:number, Attack:number, Defense:number};
   abilities: Ability[];
 }

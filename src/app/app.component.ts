@@ -46,17 +46,20 @@ export class AppComponent implements OnInit {
       this.altLight = altLight;
     });
 
-    this.profile.getStats().subscribe(currentStats => {
-      if (currentStats[0] && currentStats[0].value === 0) {
-        console.log('SUB STATS', currentStats[0].value);
-        alert('You have been converted to the ' + this.altLight);
-        this.profile.setLight(this.altLight);
-        this.routeService.setRoute('create');
-      }
-    });
+    // this.profile.getStats().subscribe(currentStats => {
+    //   if (currentStats[0] && currentStats[0].value === 0) {
+    //     console.log('SUB STATS', currentStats[0].value);
+    //     alert('You have been converted to the ' + this.altLight);
+    //     this.profile.reset();
+    //     this.profile.setLight(this.altLight);
+    //     this.routeService.setRoute('create');
+    //   }
+    // });
   }
 
   home() {
+    // this.profile.reset();
+    this.profile.setLight(null);
     this.routeService.clearRoute();
   }
 

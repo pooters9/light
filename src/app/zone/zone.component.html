@@ -74,14 +74,35 @@
     <span>
       HP: {{mob.hp}}
     </span>
-    <span>
+    <span [ngClass]="{'green': mob.attack < HP + Defense, 'red': mob.attack >= HP + Defense}">
       Attack: {{mob.attack}}
     </span>
-    <span>
+    <span [ngClass]="{'green': mob.def < Attack, 'red': mob.def >= Attack}">
       Defense: {{mob.def}}
     </span>
     <br>
-    <button (click)="battle()">Battle</button>
+    <img *ngIf="mob.name === 'BALROG'" class="balrog" src="https://vignette.wikia.nocookie.net/lotr/images/b/b2/LEGO_Balrog.jpg/revision/latest?cb=20160126130118" alt="Balrog" width="200" height="200">
+    <button (click)="battle()">Attack</button>
+    <br>
+    <div class="ability" *ngFor="let ability of raceAbilities" (click)="ability.passive || toggleAbility(ability.name)" [ngClass]="{'active': ability.active, 'clickable': !ability.passive}">
+      <span>- {{ability.name}} - {{ability.passive ? "(passive)" : "(activated)"}}</span>
+      <div *ngIf="ability.statMod">
+        <span *ngFor="let statMod of ability.statMod; let i=index">
+          {{i>0 ? ',':''}} {{statMod.name}} {{statMod.func}} {{statMod.value}} {{statMod.lvlMod ? ' * Level': ''}}
+        </span>
+      </div>
+      <span *ngIf="ability.desc">{{ability.desc}}</span>
+    </div>
+    <br>
+    <div class="ability" *ngFor="let ability of classAbilities" (click)="ability.passive || toggleAbility(ability.name)" [ngClass]="{'active': ability.active, 'clickable': !ability.passive}">
+      <span>- {{ability.name}} - {{ability.passive ? "(passive)" : "(activated)"}}</span>
+      <div *ngIf="ability.statMod">
+        <span *ngFor="let statMod of ability.statMod; let i=index">
+          {{i>0 ? ',':''}} {{statMod.name}} {{statMod.func}} {{statMod.value}} {{statMod.lvlMod ? ' * Level': ''}}
+        </span>
+      </div>
+      <span *ngIf="ability.desc">{{ability.desc}}</span>
+    </div>
   </div>
 
   <div *ngIf="!mob?.name">

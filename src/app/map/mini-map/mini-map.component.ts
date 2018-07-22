@@ -43,6 +43,12 @@ export class MiniMapComponent implements OnInit {
 
       // console.log('get grid light - this.fullMap[gridMapIdx], gridMapIdx', this.fullMap[gridMapIdx], gridMapIdx);
     // }
+    const pts = [
+      '0.0','0.1','1.1','1.0','-1.0','0.-1','-1.-1','1.-1','-1.1'
+    ];
+    if (pts.includes(gridMapIdx)) {
+      return this.fullMap["0.0"].light;
+    }
 
     return this.fullMap[gridMapIdx] ? this.fullMap[gridMapIdx].light : '';
     // return this.fullMap[gridMapIdx] && this.fullMap[gridMapIdx].light ? this.fullMap[gridMapIdx].light : chance.pickone(terrainColors);

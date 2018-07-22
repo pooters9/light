@@ -11,13 +11,19 @@
     <span>{{raceSelected}}</span>
     <span>HP: +{{getRaceStatMods()?.HP}}</span>
     <span>Attack: +{{getRaceStatMods()?.Attack}}</span>
-    <span>Defense: +{{getRaceStatMods()?.Def}}</span>
+    <span>Defense: +{{getRaceStatMods()?.Defense}}</span>
   </div>
   <div class="abilities main" *ngIf="raceSelected && raceAbilities?.length">
     <h5>Abilities</h5>
     <div *ngFor="let ability of raceAbilities" class="abilitiesContainer">
-      <span class="ability">- {{ability.name}} -</span>
-      <span class="ability">{{ability.statMod.name}} {{ability.statMod.func}} {{ability.statMod.value}}</span>
+      <span class="ability">- {{ability.name}} - {{ability.passive ? "(passive)" : "(activated)"}}</span>
+      <div *ngIf="ability.statMod">
+        <span class="ability" *ngFor="let statMod of ability.statMod; let i=index">
+          {{i>0 ? ',':''}} {{statMod.name}} {{statMod.func}} {{statMod.value}} {{statMod.lvlMod ? ' * Level': ''}}
+        </span>
+      </div>
+      <span class="ability" *ngIf="ability.desc">{{ability.desc}}</span>
+      <!-- <span class="ability">{{ability.statMod.name}} {{ability.statMod.func}} {{ability.statMod.value}}</span> -->
     </div>
     <!-- <ng-container class="abilitiesContainer">
     </ng-container> -->
@@ -31,18 +37,33 @@
         </tr>
       </table>
     </div>
-    <div class="stats main" *ngIf="classSelected">
+    <div class="stats main" *ngIf="classSelected && classEquipment?.length">
       <span>{{classSelected}}</span>
       <span>HP: +{{getClassStatMods()?.HP}}</span>
       <span>Attack: +{{getClassStatMods()?.Attack}}</span>
-      <span>Defense: +{{getClassStatMods()?.Def}}</span>
+      <span>Defense: +{{getClassStatMods()?.Defense}}</span>
+      <span>_________________</span>
+      <span>Can Equip: </span>
+      <span *ngFor="let equip of classEquipment">{{equip}}</span>
     </div>
-    <div class="abilities main" *ngIf="classEquipment && classEquipment?.length">
+    <div class="abilities main" *ngIf="classSelected && classAbilities?.length">
+      <!-- <h5>Abilities</h5> -->
+      <div *ngFor="let ability of classAbilities" class="abilitiesContainer">
+        <span class="ability">- {{ability.name}} - {{ability.passive ? "(passive)" : "(activated)"}}</span>
+        <div *ngIf="ability.statMod">
+          <span class="ability" *ngFor="let statMod of ability.statMod; let i=index">
+            {{i>0 ? ',':''}} {{statMod.name}} {{statMod.func}} {{statMod.value}} {{statMod.lvlMod ? ' * Level': ''}}
+          </span>
+        </div>
+        <span class="ability" *ngIf="ability.desc">{{ability.desc}}</span>
+      </div>
+    </div>
+    <!-- <div class="abilities main" *ngIf="classEquipment && classEquipment?.length">
       <h5>Can Equip:</h5>
       <div *ngFor="let equip of classEquipment" class="abilitiesContainer">
         <span class="ability">- {{equip}} -</span>
       </div>
-    </div> 
+    </div>  -->
     <!-- <div class="abilities main" *ngIf="classSelected && classAbilities?.length">
         <h5>Abilities</h5>
         <div *ngFor="let ability of classAbilities" class="abilitiesContainer">

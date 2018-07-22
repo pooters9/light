@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ProfileService } from './profile/profile.service';
 
 @Injectable()
 export class RoutesService {
   public route: BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor(
-    private profile: ProfileService
+    // private profile: ProfileService
   ) { }
 
   setRoute(route) {
@@ -20,7 +19,6 @@ export class RoutesService {
   }
 
   clearRoute() {
-    this.profile.setLight(null);
     this.route.next('');
   }
 }

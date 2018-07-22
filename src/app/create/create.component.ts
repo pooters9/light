@@ -129,6 +129,8 @@ export class CreateComponent implements OnInit {
   races: string[];
   raceSelected: string;
   raceAbilities: Ability[];
+  // raceAbilitiesActivated: Ability[];
+  // raceAbilitiesPassive: Ability[];
   classes: string[];
   classSelected: string;
   classAbilities: Ability[];
@@ -147,7 +149,7 @@ export class CreateComponent implements OnInit {
       this.light = light;
       this.races = raceLists[light];
       this.classes = classLists[light];
-      console.log('sub light', light, this.races);
+      // console.log('sub light', light, this.races);
     });
 
     // this.profile.getRace().subscribe((race: Race) => {
@@ -172,6 +174,8 @@ export class CreateComponent implements OnInit {
   selectRace(race) {
     this.raceSelected = race;
     this.raceAbilities = raceMap[race].abilities;
+    // this.raceAbilities = raceMap[race].abilities.map(ability => ability.extra = ability.passive ? "(passive)" : "(activated)");
+    // this.raceAbilitiesActivated = raceMap[race].abilities.filter(ability => !ability.passive);
   }
 
   selectClass(classPassed: string) {
@@ -181,32 +185,28 @@ export class CreateComponent implements OnInit {
   }
 
   getRaceStatMods() {
-    return statMods[this.raceSelected];
+    return raceMap[this.raceSelected].baseStats;
   }
 
   getClassStatMods() {
-    return statMods[this.classSelected];
+    return classMap[this.classSelected].baseStats;
   }
 
   begin() {
     this.profile.setRace(this.raceSelected);
     this.profile.setClass(this.classSelected);
-    this.profile.updateStats({
-      name: 'HP',
-      value: 3 + this.getRaceStatMods().HP + this.getClassStatMods().HP
-    });
-    this.profile.updateStats({
-      name: 'Attack',
-      value: 3 + this.getRaceStatMods().Attack + this.getClassStatMods().Attack
-    });
-    this.profile.updateStats({
-      name: 'Defense',
-      value: 3 + this.getRaceStatMods().Def + this.getClassStatMods().Def
-    });
-    this.profile.updateStats({
-      name: 'Level',
-      value: 1
-    });
+    // this.profile.updateStats({
+    //   name: 'HP',
+    //   value: 3 + this.getRaceStatMods().HP + this.getClassStatMods().HP
+    // });
+    // this.profile.updateStats({
+    //   name: 'Attack',
+    //   value: 3 + this.getRaceStatMods().Attack + this.getClassStatMods().Attack
+    // });
+    // this.profile.updateStats({
+    //   name: 'Defense',
+    //   value: 3 + this.getRaceStatMods().Def + this.getClassStatMods().Def
+    // });
     this.route.setRoute('zone');
   }
 }

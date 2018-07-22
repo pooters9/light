@@ -1,4 +1,6 @@
 <div class="char">
+    Level {{level}}
+    <br> 
     {{raceName}} {{className}}
     <h2>Stats</h2>
     <br>
@@ -7,7 +9,7 @@
     <br>
     <span *ngFor="let item of items" >
         {{item}}
-        <button (click)="equipItem(item)">+</button>
+        <button *ngIf="canEquipItem(item)" (click)="equipItem(item)">+</button>
         <button (click)="sellItem(item)">$</button>
     </span>
     <h2>Equipped</h2>

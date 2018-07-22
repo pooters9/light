@@ -17,9 +17,6 @@
     width: 10%;
 } */
 
-.center {
-    /* color: cyan; */
-}
 
 .row {
     height: 11.1111111%;
@@ -31,7 +28,6 @@
     color: white;
     background-color: brown;
 }
-
 .light {
     color: black;
     background-color: lightyellow;
@@ -40,6 +36,14 @@
     color: black;
     background-color: lightgrey;
 }
+.center {
+    color: black;
+    width: calc(11.1111111% - 1px);
+    background-color: white;
+    border: 1px solid;
+    /* color: cyan; */
+}
+
 
 .blue {
     background-color: blue;

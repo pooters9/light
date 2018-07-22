@@ -43,6 +43,8 @@ export class ZoneComponent implements OnInit {
   private light;
   private location: number[] = [0, 0];
   private locationMap = {};
+  private classAbilities;
+  private raceAbilities;
 
   public item = {
     name: '',
@@ -52,6 +54,11 @@ export class ZoneComponent implements OnInit {
   public plots: string[] = [];
   public builds: string[] = [];
   public resourcesArray = [];
+
+  public HP;
+  public Attack;
+  public Defense;
+
 
   constructor(
     private profile: ProfileService,
@@ -88,7 +95,22 @@ export class ZoneComponent implements OnInit {
     });
 
     this.profile.getStats().subscribe((stats: Stat[]) => {
-      this.level = stats[3] ? stats[3].value : 1;
+      // this.level = stats[3] ? stats[3].value : 1;
+      this.HP = stats[0].value;
+      this.Attack = stats[1].value;
+      this.Defense = stats[2].value;
+    });
+
+    this.profile.getLevel().subscribe((level) => {
+      this.level = level;
+    });
+
+    this.profile.getClass().subscribe((classResp) => {
+      this.classAbilities = classResp.abilities;
+    });
+
+    this.profile.getRace().subscribe((raceResp) => {
+      this.raceAbilities = raceResp.abilities;
     });
 
     this._newUserResources();
@@ -131,11 +153,17 @@ export class ZoneComponent implements OnInit {
     this.builds = [];
     this.item = {name:'', imgSrc:''};
 
+    let lvlMod = this.level;
+    let balrog = false;
+    if (chance.natural({max: 100}) === 9) {
+      lvlMod += 5;
+      balrog = true;
+    }
     this.mob = {
-      hp: chance.natural({min: 1, max: 100 * this.level}),
-      attack: chance.natural({min: 1, max: 100 * this.level}),
-      def: chance.natural({min: 1, max: 100 * this.level}),
-      name: chance.pickone(monsters)
+      hp: chance.natural({min: 1 * lvlMod, max: 100 * lvlMod}),
+      attack: chance.natural({min: 1 * lvlMod, max: 100 * lvlMod}),
+      def: chance.natural({min: 1 * lvlMod, max: 100 * lvlMod}),
+      name: balrog ? 'BALROG' : chance.pickone(monsters)
     };
 
     console.log('plots empty?', this.plots);
@@ -281,6 +309,10 @@ export class ZoneComponent implements OnInit {
     console.log('SAVE MAP IN ZONE - LIGHT ==>', this.light);
     this.mapsService.saveMap(this.locationMap);
     this.mapsService.saveLoc(this.location);
+  }
+
+  toggleAbility(abilityName: string) {
+    this.profile.toggleAbility(abilityName);
   }
 
   battle() {
